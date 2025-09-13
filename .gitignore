@@ -1,0 +1,17 @@
+﻿# Node / Next.js
+node_modules
+.next
+out
+dist
+.vercel
+.env
+.env.*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tsbuildinfo
+
+# OS
+.DS_Store
+Thumbs.db
