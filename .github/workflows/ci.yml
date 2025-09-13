@@ -1,0 +1,50 @@
+﻿name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Only run Node steps if package.json exists
+      - name: Detect Node project
+        id: detect
+        run: |
+          if [ -f package.json ]; then
+            echo "has_node=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_node=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Node
+        if: steps.detect.outputs.has_node == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install deps
+        if: steps.detect.outputs.has_node == 'true'
+        run: npm ci
+
+      - name: Type check
+        if: steps.detect.outputs.has_node == 'true'
+        run: npm run typecheck --if-present
+
+      - name: Lint
+        if: steps.detect.outputs.has_node == 'true'
+        run: npm run lint --if-present
+
+      - name: Build
+        if: steps.detect.outputs.has_node == 'true'
+        run: npm run build --if-present
+
+      - name: Summary
+        run: echo "CI finished. Node project: ${{ steps.detect.outputs.has_node }}"
