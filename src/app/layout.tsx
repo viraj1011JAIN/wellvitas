@@ -21,30 +21,30 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/W_favicon.png", type: "image/png", sizes: "32x32" },
-      { url: "/W_favicon.png", type: "image/png", sizes: "192x192" },
+      { url: "/W_favicon.png", type: "image/png", sizes: "192x192" }
     ],
     shortcut: "/W_favicon.png",
-    apple: "/W_favicon.png",
+    apple: "/W_favicon.png"
   },
   openGraph: {
     title: "Wellvitas",
     description:
       "Holistic therapies, wellness programmes, and lifestyle support in Glasgow.",
     url: "https://wellvitas.co.uk",
-    type: "website",
+    type: "website"
   },
   twitter: {
     card: "summary_large_image",
     title: "Wellvitas",
     description:
-      "Holistic therapies, wellness programmes, and lifestyle support in Glasgow.",
+      "Holistic therapies, wellness programmes, and lifestyle support in Glasgow."
   },
-  applicationName: "Wellvitas",
-  // themeColor moved to `viewport` export to satisfy Next.js guidance
+  applicationName: "Wellvitas"
+  // themeColor moved to `viewport` (below) per Next.js guidance
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2E0056", // brand primary (deep purple)
+  themeColor: "#2E0056"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a
           href="#main"
           className="sr-only focus:not-sr-only fixed left-2 top-2 z-[9999] rounded px-3 py-2 text-white"
-          style={{ backgroundColor: "var(--color-brand-2)" }} // magenta
+          style={{ backgroundColor: "var(--color-brand-2)" }}
         >
           Skip to content
         </a>
