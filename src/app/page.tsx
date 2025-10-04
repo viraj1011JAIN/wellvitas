@@ -1,7 +1,10 @@
 // src/app/page.tsx
+"use client";
+
 import Link from "next/link";
 import HeroCarousel from "@/components/HeroCarousel";
 import HomeTherapies from "@/components/HomeTherapies";
+import TreatmentPackagesScroller from "@/components/TreatmentPackagesScroller"; // ⟵ changed
 
 export default function Page() {
   return (
@@ -9,7 +12,7 @@ export default function Page() {
       {/* 1) Slideshow */}
       <HeroCarousel />
 
-      {/* 2) Intro (solid #2E0056, white heading, buttons at 40% of #7E0054) */}
+      {/* 2) Intro */}
       <section className="section">
         <div
           className="relative overflow-hidden rounded-2xl p-6 md:p-10"
@@ -27,11 +30,11 @@ export default function Page() {
               <Link
                 aria-label="Go to booking"
                 href="/booking"
-                className="btn rounded-2xl"
+                className="btn rounded-2xl border shadow-card transition-transform hover:-translate-y-0.5"
                 style={{
-                  backgroundColor: "var(--color-brand-2-40)", // 40% of #7E0054
-                  color: "#2E0056", // button text
-                  border: "none",
+                  background: "var(--color-brand-2-40)",
+                  color: "#2E0056",
+                  borderColor: "#7E0054",
                 }}
               >
                 Book an enquiry
@@ -40,11 +43,11 @@ export default function Page() {
               <a
                 aria-label="Jump to therapies"
                 href="#therapies"
-                className="btn rounded-2xl"
+                className="btn rounded-2xl border shadow-card transition-transform hover:-translate-y-0.5"
                 style={{
-                  backgroundColor: "var(--color-brand-2-40)", // 40% of #7E0054
-                  color: "#2E0056", // button text
-                  border: "none",
+                  background: "var(--color-brand-2-40)",
+                  color: "#2E0056",
+                  borderColor: "#7E0054",
                 }}
               >
                 View therapies
@@ -54,10 +57,15 @@ export default function Page() {
         </div>
       </section>
 
-      {/* 3) Therapies (filterable & compact) */}
-      <HomeTherapies />
+      {/* 3) Therapies */}
+      <section id="therapies" className="section">
+        <HomeTherapies />
+      </section>
 
-      {/* 4) How to book — BG #2E0056, white body text, buttons magenta-40 with purple text */}
+      {/* 3.1) Treatment Packages — scrolling like news/testimonials */}
+      <TreatmentPackagesScroller />
+
+      {/* 4) How to book */}
       <section className="section">
         <div
           className="rounded-2xl p-5 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4 shadow-card"
@@ -73,28 +81,28 @@ export default function Page() {
 
           <div className="flex gap-3">
             <a
-              className="btn rounded-2xl"
+              className="btn rounded-2xl border shadow-card transition-transform hover:-translate-y-0.5"
               href="https://wa.me/447379005856"
               target="_blank"
               rel="noreferrer"
               aria-label="Open WhatsApp chat"
               style={{
-                backgroundColor: "var(--color-brand-2-40)", // 40% of #7E0054
-                color: "#2E0056", // button text now purple
-                border: "none",
+                background: "var(--color-brand-2-40)",
+                color: "#2E0056",
+                borderColor: "#7E0054",
               }}
             >
               WhatsApp us
             </a>
 
             <Link
-              className="btn rounded-2xl"
+              className="btn rounded-2xl border shadow-card transition-transform hover:-translate-y-0.5"
               href="/booking"
               aria-label="Open booking form"
               style={{
-                backgroundColor: "var(--color-brand-2-40)", // 40% of #7E0054
-                color: "#2E0056", // button text now purple
-                border: "none",
+                background: "var(--color-brand-2-40)",
+                color: "#2E0056",
+                borderColor: "#7E0054",
               }}
             >
               Booking form
@@ -105,10 +113,7 @@ export default function Page() {
 
       {/* 5) Visit us */}
       <section className="section">
-        <h2
-          className="text-xl md:text-2xl font-semibold"
-          style={{ color: "var(--color-brand-1)" }}
-        >
+        <h2 className="text-xl md:text-2xl font-semibold" style={{ color: "var(--color-brand-1)" }}>
           Visit us
         </h2>
         <p className="mt-2 text-sm text-slate-600">

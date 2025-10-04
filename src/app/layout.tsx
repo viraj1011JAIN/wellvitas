@@ -1,5 +1,5 @@
 // src/app/layout.tsx
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Montserrat } from "next/font/google";
 import Header from "@/components/Header";
@@ -40,6 +40,10 @@ export const metadata: Metadata = {
       "Holistic therapies, wellness programmes, and lifestyle support in Glasgow.",
   },
   applicationName: "Wellvitas",
+  // themeColor moved to `viewport` export to satisfy Next.js guidance
+};
+
+export const viewport: Viewport = {
   themeColor: "#2E0056", // brand primary (deep purple)
 };
 
