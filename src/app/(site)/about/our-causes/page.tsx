@@ -1,8 +1,12 @@
 // src/app/(site)/about/our-causes/page.tsx
+import type { ReactNode } from "react";
 import Link from "next/link";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Our Causes | Wellvitas",
+  description:
+    "Causes we support through community care, education, and responsible practice.",
 };
 
 const causes = [
@@ -26,11 +30,10 @@ const causes = [
   },
 ];
 
-export default function OurCausesPage() {
+export default function OurCausesPage(): ReactNode {
   return (
     <article className="space-y-10">
-      {/* HERO BAND — rich brand panel with bright copy */}
-      {/* 6-space gap before the footer */}
+      {/* HERO BAND */}
       <div className="h-6" />
       <section className="fade-up">
         <div
@@ -55,32 +58,34 @@ export default function OurCausesPage() {
             <span
               className="inline-block text-xs font-semibold rounded-full px-3 py-1"
               style={{
-                backgroundColor: "var(--color-brand-2-40)", // 40% of #7E0054
+                backgroundColor: "var(--color-brand-2-40)",
                 color: "#2E0056",
               }}
             >
               About · Our Causes
             </span>
             <h2
-              className="mt-3 text-3xl md:text-5xl font-bold tracking-tight"
-              style={{ color: "#fff" }}
+              className="mt-3 text-3xl md:text-5xl font-bold tracking-tight text-white"
             >
               Causes we support, consistently and transparently
             </h2>
-            <p className="mt-3 max-w-prose" style={{ color: "rgba(255,255,255,.90)" }}>
-              Your visits enable community slots, education, and responsible practice.
-              Here’s where that energy goes.
+            <p
+              className="mt-3 max-w-prose"
+              style={{ color: "rgba(255,255,255,.90)" }}
+            >
+              Your visits enable community slots, education, and responsible
+              practice. Here’s where that energy goes.
             </p>
           </div>
         </div>
       </section>
 
-      {/* CAUSES — gradient border shells + soft inner surface */}
+      {/* CAUSES GRID */}
       <section
         className="grid gap-6 md:grid-cols-3 fade-up"
         style={{ animationDelay: "80ms" }}
       >
-        {causes.map((c, i) => (
+        {causes.map((c) => (
           <div
             key={c.title}
             className="hover-lift"
@@ -98,7 +103,7 @@ export default function OurCausesPage() {
                 boxShadow: "0 10px 30px rgba(0,0,0,.08)",
               }}
             >
-              {/* Icon chip */}
+              {/* Icon */}
               <div
                 className="grid h-12 w-12 place-items-center rounded-xl"
                 style={{
@@ -114,7 +119,10 @@ export default function OurCausesPage() {
 
               <h3
                 className="mt-4 font-semibold"
-                style={{ color: "var(--color-brand-1)", fontSize: "1.125rem" }}
+                style={{
+                  color: "var(--color-brand-1)",
+                  fontSize: "1.125rem",
+                }}
               >
                 {c.title}
               </h3>
@@ -141,7 +149,7 @@ export default function OurCausesPage() {
         ))}
       </section>
 
-      {/* STATS — soft brand tiles with crisp headings */}
+      {/* STATS */}
       <section
         className="grid gap-3 sm:grid-cols-3 fade-up"
         style={{ animationDelay: "160ms" }}
@@ -162,46 +170,52 @@ export default function OurCausesPage() {
             }}
           >
             <div className="text-3xl font-bold">{s.k}</div>
-            <div className="mt-1 text-sm" style={{ color: "#2E0056", opacity: 0.9 }}>
+            <div
+              className="mt-1 text-sm"
+              style={{ color: "#2E0056", opacity: 0.9 }}
+            >
               {s.v}
             </div>
           </div>
         ))}
       </section>
 
-      {/* CTA — solid #2E0056 band with gap before footer */}
-<section className="fade-up" style={{ animationDelay: "220ms" }}>
-  <div
-    className="rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4 shadow-card"
-    style={{
-      backgroundColor: "#2E0056",
-      color: "#ffffff",
-    }}
-  >
-    <div>
-      <h3 className="text-lg md:text-xl font-semibold">Want to partner on a cause?</h3>
-      <p className="mt-1 text-sm" style={{ color: "rgba(255,255,255,0.9)" }}>
-        We’re open to local collaborations that align with our values.
-      </p>
-    </div>
+      {/* CTA */}
+      <section className="fade-up" style={{ animationDelay: "220ms" }}>
+        <div
+          className="rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4 shadow-card"
+          style={{
+            backgroundColor: "#2E0056",
+            color: "#ffffff",
+          }}
+        >
+          <div>
+            <h3 className="text-lg md:text-xl font-semibold">
+              Want to partner on a cause?
+            </h3>
+            <p
+              className="mt-1 text-sm"
+              style={{ color: "rgba(255,255,255,0.9)" }}
+            >
+              We’re open to local collaborations that align with our values.
+            </p>
+          </div>
 
-    <a
-      className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold"
-      href="mailto:info@wellvitas.co.uk"
-      style={{
-        backgroundColor: "var(--color-brand-2-40)", // 40% of #7E0054
-        color: "#2E0056",
-        border: "1px solid #7E0054",
-      }}
-    >
-      Email us
-    </a>
-  </div>
-</section>
+          <a
+            className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold"
+            href="mailto:info@wellvitas.co.uk"
+            style={{
+              backgroundColor: "var(--color-brand-2-40)",
+              color: "#2E0056",
+              border: "1px solid #7E0054",
+            }}
+          >
+            Email us
+          </a>
+        </div>
+      </section>
 
-{/* 6-space gap before the footer */}
-<div className="h-6" />
-
+      <div className="h-6" />
     </article>
   );
 }
