@@ -7,12 +7,12 @@ import type {
   ComponentType as _ComponentType,
 } from "react";
 
-// eslint-disable-next-line @typescript-eslint/no-namespace
 declare global {
   namespace React {
     // Map to the real React types via distinct aliases
     type ReactNode = _ReactNode;
-    type ComponentType<P = any> = _ComponentType<P>;
+    // Avoid `any` to satisfy @typescript-eslint/no-explicit-any:
+    type ComponentType<P = Record<string, unknown>> = _ComponentType<P>;
   }
 }
 
